@@ -1,6 +1,7 @@
 from password import *
 from wires import *
 from button import *
+from wiresAdvanced import *
 
 
 class Main:
@@ -108,7 +109,7 @@ class Main:
         pass
 
     def open_wires_advanced(self):
-        pass
+        self.WiresAdvanced = WiresAdvanced(self.master, self.serial_number_last_digit, self.is_parallel_port, self.num_of_batteries)
 
     def open_serial_wires(self):
         pass

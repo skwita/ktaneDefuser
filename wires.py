@@ -3,7 +3,8 @@ from tkinter.ttk import Radiobutton
 
 
 class Wires:
-    def __init__(self, master):
+    def __init__(self, master, serial_number_last_digit):
+        self.serial_number_last_digit = serial_number_last_digit.get()
         self.top = Toplevel(master)
         self.top.title('Провода')
         self.top.geometry('500x300+300+250')
@@ -12,6 +13,7 @@ class Wires:
 
         self.selected = IntVar()
         self.lbl = Label(self.top, text="")
+
         self.lbl.place(relx=.50, rely=.50, anchor='c')
 
         # self.rad3 = Radiobutton(self.top, text='Три', value=3, variable=self.selected)

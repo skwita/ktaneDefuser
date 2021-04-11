@@ -7,32 +7,43 @@ class Wires:
         self.serial_number_last_digit = serial_number_last_digit.get()
         self.top = Toplevel(master)
         self.top.title('Провода')
-        self.top.geometry('300x300+300+250')
+        self.top.geometry('500x300+300+250')
         self.frame = Frame(self.top)
         self.frame.pack(side=BOTTOM)
+
         self.selected = IntVar()
         self.lbl = Label(self.top, text="")
-        self.lbl.place(relx=0, rely=0, anchor='s')
 
-        self.label = Label(self.top, text=self.serial_number_last_digit)
-        self.label.pack(side=LEFT)
+        self.lbl.place(relx=.50, rely=.50, anchor='c')
 
-        self.rad3 = Radiobutton(self.top, text='Три', value=3, variable=self.selected)
-        self.rad4 = Radiobutton(self.top, text='Четыре', value=4, variable=self.selected)
-        self.rad5 = Radiobutton(self.top, text='Пять', value=5, variable=self.selected)
-        self.rad6 = Radiobutton(self.top, text='Шесть', value=6, variable=self.selected)
-        self.rad3.place(relx=.25, rely=.0, anchor='n')
-        self.rad4.place(relx=.4, rely=.0, anchor='n')
-        self.rad5.place(relx=.55, rely=.0, anchor='n')
-        self.rad6.place(relx=.70, rely=.0, anchor='n')
+        # self.rad3 = Radiobutton(self.top, text='Три', value=3, variable=self.selected)
+        # self.rad4 = Radiobutton(self.top, text='Четыре', value=4, variable=self.selected)
+        # self.rad5 = Radiobutton(self.top, text='Пять', value=5, variable=self.selected)
+        # self.rad6 = Radiobutton(self.top, text='Шесть', value=6, variable=self.selected)
+        #
+        # self.rad3.place(relx=.25, rely=.0, anchor='n')
+        # self.rad4.place(relx=.4, rely=.0, anchor='n')
+        # self.rad5.place(relx=.55, rely=.0, anchor='n')
+        # self.rad6.place(relx=.70, rely=.0, anchor='n')
 
-        self.txt = Entry(self.top, width=30)
-        self.txt.place(relx=.5, rely=.1, anchor='c')
+        self.txt = string
 
-        self.btn = Button(self.top, text="Клик!", command=self.enter)
-        self.btn.place(relx=.5, rely=.2, anchor='c')
-        self.btn = Button(self.top, text="clear", command=self.clear)
-        self.btn.place(relx=.5, rely=.3, anchor='c')
+        self.red = Button(self.top, bg="#f55353", width=10, height=2, command=self.write_red)
+        self.red.place(relx=.5, rely=.1, anchor='c')
+        self.blue = Button(self.top, bg="#5653f5", width=10, height=2)
+        self.blue.place(relx=.5, rely=.25, anchor='c')
+        self.yellow = Button(self.top, bg="#d4f553", width=10, height=2)
+        self.yellow.place(relx=.5, rely=.4, anchor='c')
+        self.white = Button(self.top, bg="#fff", width=10, height=2)
+        self.white.place(relx=.5, rely=.55, anchor='c')
+
+        self.btn = Button(self.top, text="Клик!", width=10, height=2, command=self.enter)
+        self.btn.place(relx=.5, rely=.7, anchor='c')
+        self.btn = Button(self.top, text="clear", width=10, height=2, command=self.clear)
+        self.btn.place(relx=.5, rely=.845, anchor='c')
+
+    def write_red(self):
+
 
     def enter(self):
         def split(word):

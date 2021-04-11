@@ -3,8 +3,8 @@ from wires import *
 from words import Words
 from button import *
 from wiresAdvanced import *
+from memory import *
 from keyboard import *
-
 
 
 
@@ -107,7 +107,7 @@ class Main:
         self.Words = Words(self.master)
 
     def open_memory(self):
-        pass
+        self.Memory = Memory(self.master)
 
     def open_morse(self):
         pass

@@ -1,5 +1,6 @@
 from password import *
 from wires import *
+from button import *
 
 
 class Main:
@@ -26,6 +27,7 @@ class Main:
         self.label_car.pack(side=LEFT)
         self.car_lamp = Checkbutton(self.row1, variable=self.is_car, width=1, onvalue=1, offvalue=0)
         self.car_lamp.pack(side=LEFT)
+
         self.label_batteries = Label(self.row1, text='батарейки', width=11)
         self.label_batteries.pack(side=LEFT)
         self.batteries_input = Entry(self.row1, textvariable=self.num_of_batteries, width=11)
@@ -88,7 +90,7 @@ class Main:
         self.Password = Password(self.master)
 
     def open_button(self):
-        pass
+        self.MyButton = MyButton(self.master, self.num_of_batteries, self.is_car, self.is_frk)
 
     def open_key_board(self):
         pass

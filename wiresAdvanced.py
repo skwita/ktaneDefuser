@@ -26,7 +26,7 @@ class WiresAdvanced:
             self.label.pack(side=LEFT, pady=1, padx=15)
             self.row.pack()
         self.row = Frame(self.top)
-        self.img = ImageTk.PhotoImage(Image.open("resourses\\meme.jpg"))
+        self.img = ImageTk.PhotoImage(Image.open("resources\\meme.jpg"))
         self.label = Label(self.row, image=self.img)
         self.label.pack(side=LEFT, pady=1, padx=15)
         self.row.pack()

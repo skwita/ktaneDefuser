@@ -5,7 +5,6 @@ class MyButton:
     def __init__(self, master, num_battery, ind_car, ind_frk):
         self.top = Toplevel(master)
         self.top.title('Кнопка')
-        self.top.geometry('500x400+300+250')
         self.frame = Frame(self.top)
         self.frame.pack(side=BOTTOM)
 

@@ -40,6 +40,8 @@ class Main:
         self.car_lamp.pack(side=LEFT)
         self.row1.pack()
 
+
+
         self.row2 = tk.Frame()
         self.button_wires = Button(self.row2, text='Провода', command=self.open_wires, width=15)
         self.button_wires.pack(side=LEFT)

@@ -132,7 +132,7 @@ class Password(tk.Frame):
         result2.clear()
         result3.clear()
         result4.clear()
-
+#
     def clear(self):
         self.txt1.delete(0, tk.END)
         self.txt2.delete(0, tk.END)

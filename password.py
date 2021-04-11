@@ -41,8 +41,6 @@ class Password(tk.Frame):
         self.btn = tk.Button(self, text="clear", command=self.clear)
         self.btn.pack(anchor='center')
 
-
-
         self.t1.trace("w", lambda name, index, mode, t1=self.t1: self.enter())
         self.t2.trace("w", lambda name, index, mode, t2=self.t2: self.enter())
         self.t3.trace("w", lambda name, index, mode, t3=self.t3: self.enter())
@@ -89,19 +87,19 @@ class Password(tk.Frame):
         word3 = False
         word4 = False
 
-        if self.txt1.get() is "":
+        if self.txt1.get() == "":
             word1 = False
         else:
             word1 = True
-        if self.txt2.get() is "":
+        if self.txt2.get() == "":
             word2 = False
         else:
             word2 = True
-        if self.txt3.get() is "":
+        if self.txt3.get() == "":
             word3 = False
         else:
             word3 = True
-        if self.txt4.get() is "":
+        if self.txt4.get() == "":
             word4 = False
         else:
             word4 = True

@@ -13,7 +13,7 @@ class Main:
         self.serial_number_last_digit = StringVar()
         self.is_parallel_port = StringVar()
 
-        self.batteries_input = Entry(self.master, textvariable=self.num_of_batteries)
+        self.batteries_input = Entry(self.master, textvariable=self.serial_number_last_digit)
         self.batteries_input.pack(side=TOP)
 
         self.temp = Label(self.master)

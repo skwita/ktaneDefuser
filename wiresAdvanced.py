@@ -6,7 +6,6 @@ class WiresAdvanced:
     def __init__(self, master, serial_number_last_digit, parallel_port, num_battery):
         self.top = Toplevel(master)
         self.top.title('Кнопка')
-        self.top.geometry('500x400+300+250')
         self.frame = Frame(self.top)
         self.frame.pack(side=BOTTOM)
 
@@ -37,13 +36,12 @@ class WiresAdvanced:
         self.label_array.append("Красный со звездой")
         count = 4
 
-        if not self.even:
+        if self.even:
             self.label_array.append("Красный")
             self.label_array.append("Синий")
             self.label_array.append("Красно-синий")
-            self.label_array.append("Белый")
             self.label_array.append("Красно-синий горит")
-            count += 5
+            count += 4
 
         if self.port:
             self.label_array.append("Синий горит")

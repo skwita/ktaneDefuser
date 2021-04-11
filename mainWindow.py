@@ -4,6 +4,8 @@ from words import Words
 from button import *
 from wiresAdvanced import *
 from memory import *
+from keyboard import *
+
 
 
 class Main:
@@ -96,7 +98,7 @@ class Main:
         self.MyButton = MyButton(self.master, self.num_of_batteries, self.is_car, self.is_frk)
 
     def open_key_board(self):
-        pass
+        self.Keyboard = Keyboard(self.master)
 
     def open_colors(self):
         pass

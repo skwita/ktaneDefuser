@@ -32,7 +32,6 @@ class MyButton:
         self.white.pack(side=LEFT, pady=5, padx=15)
         self.row2.pack()
 
-
         self.row3 = Frame(self.top)
         self.abort = Button(self.row3, text='Abort', width=10, height=2, command=self.set_abort)
         self.abort.pack(side=LEFT, pady=5, padx=5)

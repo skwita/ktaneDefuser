@@ -31,7 +31,7 @@ class Wires:
         self.red.pack(side=LEFT, pady=5, padx=5)
         self.blue = Button(self.row1, bg="#5653f5", width=10, height=2, command=self.write_blue)
         self.blue.pack(side=LEFT, pady=5, padx=5)
-        self.yellow = Button(self.row1, bg="#d4f553", width=10, height=2, command=self.write_yellow)
+        self.yellow = Button(self.row1, bg="#f2f553", width=10, height=2, command=self.write_yellow)
         self.yellow.pack(side=LEFT, pady=5, padx=5)
         self.row1.pack()
 

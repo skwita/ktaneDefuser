@@ -1,7 +1,9 @@
 from password import *
 from wires import *
+from words import Words
 from button import *
 from wiresAdvanced import *
+
 
 
 class Main:
@@ -100,7 +102,7 @@ class Main:
         pass
 
     def open_words(self):
-        pass
+        self.Words = Words(self.master)
 
     def open_memory(self):
         pass

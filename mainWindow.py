@@ -18,7 +18,7 @@ class Main:
         self.Wires = Wires(self.master)
 
     def open_password(self):
-        self.password = Password()
+        self.password = Password(self.master)
 
 
 if __name__ == '__main__':

@@ -1,7 +1,7 @@
 import tkinter as tk
 
 
-class Password(tk.Frame):
+class Password:
     allWords = ["about", "after", "again", "below", "could",
                 "every", "first", "found", "great", "house",
                 "large", "learn", "never", "other", "place",
@@ -10,11 +10,13 @@ class Password(tk.Frame):
                 "these", "thing", "think", "three", "water",
                 "where", "which", "world", "would", "write"]
 
-    def __init__(self):
-        super().__init__()
+    def __init__(self, master):
+        self.top = tk.Toplevel(master)
+        self.top.title('Пароль')
+        self.frame = tk.Frame(self.top)
         row_array = list()
         for i in range(7):
-            row = tk.Frame(self)
+            row = tk.Frame(self.top)
             row_array.append(row)
 
         self.labels = list()
@@ -30,15 +32,15 @@ class Password(tk.Frame):
                 self.labels.append(self.array_label)
             row_array[i].pack(fill='x', expand=True)
 
-        self.txt1 = tk.Entry(self, textvariable=self.t1)
+        self.txt1 = tk.Entry(self.top, textvariable=self.t1)
         self.txt1.pack(fill='x', expand=True)
-        self.txt2 = tk.Entry(self, textvariable=self.t2)
+        self.txt2 = tk.Entry(self.top, textvariable=self.t2)
         self.txt2.pack(fill='x', expand=True)
-        self.txt3 = tk.Entry(self, textvariable=self.t3)
+        self.txt3 = tk.Entry(self.top, textvariable=self.t3)
         self.txt3.pack(fill='x', expand=True)
-        self.txt4 = tk.Entry(self, textvariable=self.t4)
+        self.txt4 = tk.Entry(self.top, textvariable=self.t4)
         self.txt4.pack(fill='x', expand=True)
-        self.btn = tk.Button(self, text="clear", command=self.clear)
+        self.btn = tk.Button(self.top, text="clear", command=self.clear)
         self.btn.pack(anchor='center')
 
 
@@ -144,6 +146,7 @@ class Password(tk.Frame):
 
 if __name__ == '__main__':
     root = tk.Tk()
-    app = Password()
+    root.withdraw()
+    app = Password(root)
     app.pack()
     root.mainloop()

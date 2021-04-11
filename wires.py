@@ -6,11 +6,10 @@ class Wires:
     def __init__(self, master, serial_number_last_digit):
         self.top = Toplevel(master)
         self.top.title('Провода')
-        self.top.geometry('110x320+300+250')
         self.frame = Frame(self.top)
         self.frame.pack(side=BOTTOM)
 
-        if int(serial_number_last_digit.get()) % 2 == 0:
+        if serial_number_last_digit.get() % 2 == 0:
             self.even = True
         else:
             self.even = False
@@ -23,29 +22,32 @@ class Wires:
             'w': 0
         }
         self.lbl = Label(self.top, text="")
-        self.lbl.place(relx=.50, rely=.95, anchor='c')
+        self.lbl.pack(side=BOTTOM, pady=5)
 
         self.txt = ""
 
-        self.red = Button(self.top, bg="#f55353", width=10, height=2, command=self.write_red)
-        self.red.place(relx=.5, rely=.1, anchor='c')
+        self.row1 = Frame(self.top)
+        self.red = Button(self.row1, bg="#f55353", width=10, height=2, command=self.write_red)
+        self.red.pack(side=LEFT, pady=5, padx=5)
+        self.blue = Button(self.row1, bg="#5653f5", width=10, height=2, command=self.write_blue)
+        self.blue.pack(side=LEFT, pady=5, padx=5)
+        self.yellow = Button(self.row1, bg="#d4f553", width=10, height=2, command=self.write_yellow)
+        self.yellow.pack(side=LEFT, pady=5, padx=5)
+        self.row1.pack()
 
-        self.blue = Button(self.top, bg="#5653f5", width=10, height=2, command=self.write_blue)
-        self.blue.place(relx=.5, rely=.25, anchor='c')
+        self.row2 = Frame(self.top)
+        self.black = Button(self.row2, bg="#000", width=10, height=2, command=self.write_black)
+        self.black.pack(side=LEFT, pady=5, padx=15)
+        self.white = Button(self.row2, bg="#fff", width=10, height=2, command=self.write_white)
+        self.white.pack(side=LEFT, pady=5, padx=15)
+        self.row2.pack()
 
-        self.yellow = Button(self.top, bg="#d4f553", width=10, height=2, command=self.write_yellow)
-        self.yellow.place(relx=.5, rely=.4, anchor='c')
-
-        self.black = Button(self.top, bg="#fff", width=10, height=2, command=self.write_black)
-        self.black.place(relx=.5, rely=.55, anchor='c')
-
-        self.white = Button(self.top, bg="#fff", width=10, height=2, command=self.write_white)
-        self.white.place(relx=.5, rely=.55, anchor='c')
-
-        self.btn = Button(self.top, text="Клик!", width=10, height=2, command=self.enter)
-        self.btn.place(relx=.5, rely=.7, anchor='c')
-        self.btn = Button(self.top, text="clear", width=10, height=2, command=self.clear)
-        self.btn.place(relx=.5, rely=.845, anchor='c')
+        self.row3 = Frame(self.top)
+        self.btn = Button(self.row3, text="Клик!", width=10, height=2, command=self.enter)
+        self.btn.pack(side=LEFT, pady=5, padx=15)
+        self.btn = Button(self.row3, text="clear", width=10, height=2, command=self.clear)
+        self.btn.pack(side=LEFT, pady=5, padx=15)
+        self.row3.pack()
 
     def write_red(self):
         self.txt += 'r'

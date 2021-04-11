@@ -1,5 +1,6 @@
 from password import *
 from wires import *
+from button import *
 
 
 class Main:
@@ -8,11 +9,11 @@ class Main:
         self.master.title('Солвер бомб')
         # self.master.geometry('400x300+200+150')
 
-        self.num_of_batteries = StringVar()
-        self.serial_number_last_digit = StringVar()
-        self.is_parallel_port = StringVar()
-        self.is_frk = StringVar()
-        self.is_car = StringVar()
+        self.num_of_batteries = IntVar()
+        self.serial_number_last_digit = IntVar()
+        self.is_parallel_port = BooleanVar()
+        self.is_frk = BooleanVar()
+        self.is_car = BooleanVar()
 
         self.row0 = tk.Frame()
         self.label_batteries = Label(self.row0, text='батарейки', width=10)
@@ -85,7 +86,7 @@ class Main:
         self.Password = Password(self.master)
 
     def open_button(self):
-        pass
+        self.MyButton = MyButton(self.master, self.num_of_batteries, self.is_car, self.is_frk)
 
     def open_key_board(self):
         pass

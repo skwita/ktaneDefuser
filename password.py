@@ -140,11 +140,3 @@ class Password:
         self.txt4.delete(0, tk.END)
         for i in range(len(self.allWords)):
             self.labels[i].configure(bg="#ffa6a6")
-
-
-if __name__ == '__main__':
-    root = tk.Tk()
-    root.withdraw()
-    app = Password(root)
-    app.pack()
-    root.mainloop()

@@ -40,8 +40,8 @@ class Keyboard:
             self.buttons[i].configure(width=100, height=100, command=partial(self.save, i))
 
         self.row = tk.Frame(self.top)
-        self.btn_final = tk.Button(self.row, text="click!", command=self.proceed).pack(side='left', padx=5, pady=5)
-        self.btn_clear = tk.Button(self.row, text="clear", command=self.clear).pack(side='left', padx=5, pady=5)
+        self.btn_final = tk.Button(self.row, text="click!", command=self.proceed, font='20').pack(side='left', padx=5, pady=5)
+        self.btn_clear = tk.Button(self.row, text="clear", command=self.clear, font='20').pack(side='left', padx=5, pady=5)
         self.row.pack()
 
         self.row1 = tk.Frame(self.top)
@@ -122,8 +122,18 @@ class Keyboard:
         self.presses.clear()
 
     def clear(self):
+        image1 = ImageTk.PhotoImage(Image.open("resources\\meme.jpg"))
+        self.label_image1.configure(image=image1)
+        self.label_image1.photo_ref = image1
 
-        self.label_image1.configure(image=ImageTk.PhotoImage(Image.open("resources\\meme.jpg")))
-        self.label_image2.configure(image=ImageTk.PhotoImage(Image.open("resources\\meme.jpg")))
-        self.label_image3.configure(image=ImageTk.PhotoImage(Image.open("resources\\meme.jpg")))
-        self.label_image4.configure(image=ImageTk.PhotoImage(Image.open("resources\\meme.jpg")))
+        image2 = ImageTk.PhotoImage(Image.open("resources\\meme.jpg"))
+        self.label_image2.configure(image=image2)
+        self.label_image2.photo_ref = image2
+
+        image3 = ImageTk.PhotoImage(Image.open("resources\\meme.jpg"))
+        self.label_image3.configure(image=image3)
+        self.label_image3.photo_ref = image3
+
+        image4 = ImageTk.PhotoImage(Image.open("resources\\meme.jpg"))
+        self.label_image4.configure(image=image4)
+        self.label_image4.photo_ref = image4

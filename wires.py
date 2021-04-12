@@ -9,11 +9,7 @@ class Wires:
         self.frame = Frame(self.top)
         self.frame.pack(side=BOTTOM)
 
-        if serial_number_last_digit.get() % 2 == 0:
-            self.even = True
-        else:
-            self.even = False
-
+        # счётчик для проводов каждого цвета
         self.num_colors = {
             'r': 0,
             'b': 0,
@@ -21,27 +17,36 @@ class Wires:
             'k': 0,
             'w': 0
         }
-        self.lbl = Label(self.top, text="")
-        self.lbl.pack(side=BOTTOM, pady=5)
+
+        # инициализация переменных
+        if serial_number_last_digit.get() % 2 == 0:
+            self.even = True
+        else:
+            self.even = False
 
         self.txt = ""
 
+        # интерфейс
         self.row1 = Frame(self.top)
-        Button(self.row1, bg="#f55353", width=10, height=2, command=self.write_red).pack(side=LEFT, pady=5, padx=5)
-        Button(self.row1, bg="#5653f5", width=10, height=2, command=self.write_blue).pack(side=LEFT, pady=5, padx=5)
-        Button(self.row1, bg="#f2f553", width=10, height=2, command=self.write_yellow).pack(side=LEFT, pady=5, padx=5)
+        Button(self.row1, bg="#f55353", width=10, height=2, command=self.write_red, font='20').pack(side=LEFT, pady=5, padx=5)
+        Button(self.row1, bg="#5653f5", width=10, height=2, command=self.write_blue, font='20').pack(side=LEFT, pady=5, padx=5)
+        Button(self.row1, bg="#f2f553", width=10, height=2, command=self.write_yellow, font='20').pack(side=LEFT, pady=5, padx=5)
         self.row1.pack()
 
         self.row2 = Frame(self.top)
-        Button(self.row2, bg="#000", width=10, height=2, command=self.write_black).pack(side=LEFT, pady=5, padx=15)
-        Button(self.row2, bg="#fff", width=10, height=2, command=self.write_white).pack(side=LEFT, pady=5, padx=15)
+        Button(self.row2, bg="#000", width=10, height=2, command=self.write_black, font='10').pack(side=LEFT, pady=5, padx=15)
+        Button(self.row2, bg="#fff", width=10, height=2, command=self.write_white, font='10').pack(side=LEFT, pady=5, padx=15)
         self.row2.pack()
 
         self.row3 = Frame(self.top)
-        Button(self.row3, text="Клик!", width=10, height=2, command=self.enter).pack(side=LEFT, pady=5, padx=15)
-        Button(self.row3, text="clear", width=10, height=2, command=self.clear).pack(side=LEFT, pady=5, padx=15)
+        Button(self.row3, text="Клик!", width=10, height=2, command=self.enter, font='10').pack(side=LEFT, pady=5, padx=15)
+        Button(self.row3, text="clear", width=10, height=2, command=self.clear, font='10').pack(side=LEFT, pady=5, padx=15)
         self.row3.pack()
 
+        self.lbl = Label(self.top, text="", font='50')
+        self.lbl.pack(side=BOTTOM, pady=5)
+
+    # когда нажимается кнопка, методы для запоминания порядка проводов и подсчёта их количества
     def write_red(self):
         self.txt += 'r'
         self.num_colors['r'] += 1
@@ -62,6 +67,7 @@ class Wires:
         self.txt += 'w'
         self.num_colors['w'] += 1
 
+    # делаем вывод, какой провод резать
     def enter(self):
         def split(word):
             return [char for char in word]
@@ -118,6 +124,9 @@ class Wires:
 
         self.lbl.configure(text=result)
 
+    # если что-то пошло не так, то чистим все переменные, и вывод на всякий случай тоже "онуляем"
     def clear(self):
         self.txt = ""
+        for i in self.num_colors:
+            self.num_colors[i] = 0
         self.lbl.configure(text="")

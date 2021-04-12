@@ -7,7 +7,8 @@ from wiresAdvanced import *
 from memory import *
 from keyboard import *
 from maze import *
-from serialWires import*
+from serialWires import *
+from doAsIDo import *
 
 
 class Main:
@@ -20,10 +21,13 @@ class Main:
         self.is_parallel_port = BooleanVar()
         self.is_frk = BooleanVar()
         self.is_car = BooleanVar()
+        self.is_vowels = BooleanVar()
 
         self.row0 = tk.Frame()
         Label(self.row0, text='порт', width=5).pack(side=LEFT)
         Checkbutton(self.row0, variable=self.is_parallel_port, width=1, onvalue=1, offvalue=0).pack(side=LEFT)
+        Label(self.row0, text='гласные').pack(side=LEFT, padx=11)
+        Checkbutton(self.row0, variable=self.is_vowels, width=1, onvalue=1, offvalue=0).pack(side=LEFT)
         self.row0.pack(anchor=W)
 
         self.row1 = tk.Frame()
@@ -79,7 +83,7 @@ class Main:
         self.Keyboard = Keyboard(self.master)
 
     def open_colors(self):
-        pass
+        self.DoAsIDo = DoAsIDo(self.master, self.is_vowels)
 
     def open_words(self):
         self.Words = Words(self.master)

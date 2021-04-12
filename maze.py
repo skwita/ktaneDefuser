@@ -205,55 +205,55 @@ class Maze:
         self.row1.pack()
 
         self.row2 = Frame(self.top)
-        Label(self.row2, text='Строка:').pack(side='left', padx=5, pady=5)
-        self.row_circle = Combobox(self.row2, values=self.numbers)
+        Label(self.row2, text='Строка:', font='Arial 10').pack(side='left', padx=5, pady=5)
+        self.row_circle = Combobox(self.row2, values=self.numbers, font='Arial 10')
         self.row_circle.pack(side='left', padx=5, pady=5)
         self.row2.pack()
 
         self.row3 = Frame(self.top)
-        Label(self.row3, text='Столбик:').pack(side='left', padx=5, pady=5)
-        self.column_circle = Combobox(self.row3, values=self.numbers)
+        Label(self.row3, text='Столбик:', font='Arial 10').pack(side='left', padx=5, pady=5)
+        self.column_circle = Combobox(self.row3, values=self.numbers, font='Arial 10')
         self.column_circle.pack(side='left', padx=5, pady=5)
         self.row3.pack()
 
         self.row4 = Frame(self.top)
-        Label(self.row4, text='Игрок:').pack()
+        Label(self.row4, text='Игрок:', font='Arial 10').pack()
         self.row4.pack()
 
         self.row5 = Frame(self.top)
-        Label(self.row5, text='Строка:').pack(side='left', padx=5, pady=5)
-        self.row_player = Combobox(self.row5, values=self.numbers)
+        Label(self.row5, text='Строка:', font='Arial 10').pack(side='left', padx=5, pady=5)
+        self.row_player = Combobox(self.row5, values=self.numbers, font='Arial 10')
         self.row_player.pack(side='left', padx=5, pady=5)
         self.row5.pack()
 
         self.row6 = Frame(self.top)
-        Label(self.row6, text='Столбик:').pack(side='left', padx=5, pady=5)
-        self.column_player = Combobox(self.row6, values=self.numbers)
+        Label(self.row6, text='Столбик:', font='Arial 10').pack(side='left', padx=5, pady=5)
+        self.column_player = Combobox(self.row6, values=self.numbers, font='Arial 10')
         self.column_player.pack(side='left', padx=5, pady=5)
         self.row6.pack()
 
         self.row7 = Frame(self.top)
-        Label(self.row7, text='Цель:').pack()
+        Label(self.row7, text='Цель:', font='Arial 10').pack()
         self.row7.pack()
 
         self.row8 = Frame(self.top)
-        Label(self.row8, text='Строка:').pack(side='left', padx=5, pady=5)
-        self.row_ambition = Combobox(self.row8, values=self.numbers)
+        Label(self.row8, text='Строка:', font='Arial 10').pack(side='left', padx=5, pady=5)
+        self.row_ambition = Combobox(self.row8, values=self.numbers, font='Arial 10')
         self.row_ambition.pack(side='left', padx=5, pady=5)
         self.row8.pack()
 
         self.row9 = Frame(self.top)
-        Label(self.row9, text='Столбик:').pack(side='left', padx=5, pady=5)
-        self.column_ambition = Combobox(self.row9, values=self.numbers)
+        Label(self.row9, text='Столбик:', font='Arial 10').pack(side='left', padx=5, pady=5)
+        self.column_ambition = Combobox(self.row9, values=self.numbers, font='Arial 10')
         self.column_ambition.pack(side='left', padx=5, pady=5)
         self.row9.pack()
 
         self.row10 = Frame(self.top)
-        Button(self.row10, text='Найти путь!', command=self.solve_maze, width=15).pack(side=LEFT, padx=5, pady=5)
+        Button(self.row10, text='Найти путь!', command=self.solve_maze, width=15, font='Arial 10').pack(side=LEFT, padx=5, pady=5)
         self.row10.pack()
 
         self.row11 = Frame(self.top)
-        self.solution = Label(self.row11, text='')
+        self.solution = Label(self.row11, text='', font='Arial 10')
         self.solution.pack()
         self.row11.pack()
 
@@ -318,7 +318,6 @@ class Maze:
     def transformation(self, array):
         manual = ''
         previous = ''
-        current = ''
         count = 0
         for i in range(1, len(array)):
             if array[i][1] < array[i - 1][1]:
@@ -372,4 +371,3 @@ class Maze:
         manual = manual[3:]
 
         return manual
-

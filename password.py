@@ -27,20 +27,20 @@ class Password:
         # root.geometry('500x500')
         for i in range(7):
             for j in range(5):
-                self.array_label = tk.Label(row_array[i], width=7, text=self.allWords[i * 5 +j])
+                self.array_label = tk.Label(row_array[i], width=7, text=self.allWords[i * 5 +j], font='20')
                 self.array_label.pack(side='left', fill='x')
                 self.labels.append(self.array_label)
             row_array[i].pack(fill='x', expand=True)
 
-        self.txt1 = tk.Entry(self.top, textvariable=self.t1)
+        self.txt1 = tk.Entry(self.top, textvariable=self.t1, font='20')
         self.txt1.pack(fill='x', expand=True)
-        self.txt2 = tk.Entry(self.top, textvariable=self.t2)
+        self.txt2 = tk.Entry(self.top, textvariable=self.t2, font='20')
         self.txt2.pack(fill='x', expand=True)
-        self.txt3 = tk.Entry(self.top, textvariable=self.t3)
+        self.txt3 = tk.Entry(self.top, textvariable=self.t3, font='20')
         self.txt3.pack(fill='x', expand=True)
-        self.txt4 = tk.Entry(self.top, textvariable=self.t4)
+        self.txt4 = tk.Entry(self.top, textvariable=self.t4, font='20')
         self.txt4.pack(fill='x', expand=True)
-        self.btn = tk.Button(self.top, text="clear", command=self.clear)
+        self.btn = tk.Button(self.top, text="clear", command=self.clear, font='20')
         self.btn.pack(anchor='center')
 
         self.t1.trace("w", lambda name, index, mode, t1=self.t1: self.enter())

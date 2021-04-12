@@ -97,7 +97,6 @@ class Keyboard:
         for i in range(len(is_column)):
             if is_column[i]:
                 temp = i
-        print(columns[temp])
 
         final = list()
 
@@ -105,7 +104,6 @@ class Keyboard:
             if self.presses.__contains__(word):
                 final.append(word)
 
-        print(final)
         if len(final) != 4:
             pass
         else:

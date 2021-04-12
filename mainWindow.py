@@ -1,4 +1,5 @@
 from password import *
+from rotaryHandle import RotaryHandle
 from wires import *
 from words import Words
 from button import *
@@ -99,7 +100,7 @@ class Main:
         self.Maze = Maze(self.master)
 
     def open_rotary_handle(self):
-        pass
+        self.RotaryHandle = RotaryHandle(self.master)
 
 
 if __name__ == '__main__':

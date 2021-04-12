@@ -1,3 +1,4 @@
+from morse import Morse
 from password import *
 from rotaryHandle import RotaryHandle
 from wires import *
@@ -88,7 +89,7 @@ class Main:
         self.Memory = Memory(self.master)
 
     def open_morse(self):
-        pass
+        self.Morse = Morse(self.master)
 
     def open_wires_advanced(self):
         self.WiresAdvanced = WiresAdvanced(self.master, self.serial_number_last_digit, self.is_parallel_port, self.num_of_batteries)

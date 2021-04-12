@@ -9,6 +9,7 @@ class WiresAdvanced:
         self.frame = Frame(self.top)
         self.frame.pack(side=BOTTOM)
 
+        # объявление переменных
         if serial_number_last_digit.get() % 2 == 0:
             self.even = True
         else:
@@ -19,15 +20,20 @@ class WiresAdvanced:
         self.label_array = []
         self.label_array.append("РЕЖЬ РЕЖЬ РЕЖЬ РЕЖЬ РЕЖЬ")
         self.count = self.count_labels()
+
+        # интерфейс
         for i in range(self.count):
             self.row = Frame(self.top)
-            Label(self.row, text=self.label_array[i]).pack(side=LEFT, pady=1, padx=15)
+            Label(self.row, text=self.label_array[i], font='Arial 20').pack(side=LEFT, pady=1, padx=15)
             self.row.pack()
+
         self.row = Frame(self.top)
+        # забавная картинка
         self.img = ImageTk.PhotoImage(Image.open("resources\\meme.jpg"))
         Label(self.row, image=self.img).pack(side=LEFT, pady=1, padx=15)
         self.row.pack()
 
+    # метод считает добавляет в массив строки и считает их количество
     def count_labels(self):
         self.label_array.append("Белый")
         self.label_array.append("Белый со звездой")

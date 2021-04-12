@@ -50,24 +50,24 @@ class SerialWires:
 
         # интерфейс
         self.row1 = Frame(self.top)
-        Button(self.row1, bg="#f55353", command=self.inc_count_and_set_red, width=10, height=2).pack(side=LEFT, padx=5, pady=5)
-        Button(self.row1, bg="#5653f5", command=self.inc_count_and_set_blue, width=10, height=2).pack(side=LEFT, padx=5, pady=5)
-        Button(self.row1, bg="#000", command=self.inc_count_and_set_black, width=10, height=2).pack(side=LEFT, padx=5, pady=5)
+        Button(self.row1, bg="#f55353", command=self.inc_count_and_set_red, width=10, height=2, font='Arial 10').pack(side=LEFT, padx=5, pady=5)
+        Button(self.row1, bg="#5653f5", command=self.inc_count_and_set_blue, width=10, height=2, font='Arial 10').pack(side=LEFT, padx=5, pady=5)
+        Button(self.row1, bg="#000", command=self.inc_count_and_set_black, width=10, height=2, font='Arial 10').pack(side=LEFT, padx=5, pady=5)
         self.row1.pack()
 
         self.row2 = Frame(self.top)
-        Button(self.row2, text="A", command=self.choose_a, width=10, height=2).pack(side=LEFT, padx=5, pady=5)
-        Button(self.row2, text="B", command=self.choose_b, width=10, height=2).pack(side=LEFT, padx=5, pady=5)
-        Button(self.row2, text="C", command=self.choose_c, width=10, height=2).pack(side=LEFT, padx=5, pady=5)
+        Button(self.row2, text="A", command=self.choose_a, width=10, height=2, font='Arial 10').pack(side=LEFT, padx=5, pady=5)
+        Button(self.row2, text="B", command=self.choose_b, width=10, height=2, font='Arial 10').pack(side=LEFT, padx=5, pady=5)
+        Button(self.row2, text="C", command=self.choose_c, width=10, height=2, font='Arial 10').pack(side=LEFT, padx=5, pady=5)
         self.row2.pack()
 
         self.row3 = Frame(self.top)
-        Button(self.row3, text="Что делать?", command=self.must_do, width=10, height=2).pack(side=LEFT, padx=5, pady=5)
-        Button(self.row3, text="Упс...", command=self.ooopsy, width=10, height=2).pack(side=LEFT, padx=5, pady=5)
+        Button(self.row3, text="Что делать?", command=self.must_do, width=10, height=2, font='Arial 10').pack(side=LEFT, padx=5, pady=5)
+        Button(self.row3, text="Упс...", command=self.ooopsy, width=10, height=2, font='Arial 10').pack(side=LEFT, padx=5, pady=5)
         self.row3.pack()
 
         self.row4 = Frame(self.top)
-        self.lbl = Label(self.row4, text='')
+        self.lbl = Label(self.row4, text='', font='Arial 10')
         self.lbl.pack(side=LEFT)
         self.row4.pack()
 
@@ -92,7 +92,7 @@ class SerialWires:
     def choose_c(self):
         self.current_let = 'c'
 
-    # вызывает кнопка что делать
+    # вызывает кнопка "что делать"
     def must_do(self):
         result = ''
         colors = ['red', 'blue', 'black']

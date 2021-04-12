@@ -1,5 +1,6 @@
 from tkinter import *
 
+
 class Memory:
     def __init__(self, master):
         self.top = Toplevel(master)
@@ -7,12 +8,14 @@ class Memory:
         self.frame = Frame(self.top)
         self.frame.pack(side=BOTTOM)
 
+        # инициализация переменных
         self.stage = 1
         self.value = False
         self.values = []
         self.positions = []
         self.num = StringVar()
 
+        # интерфейс
         self.row1 = Frame(self.top)
         Button(self.row1, text='1', width=10, height=2, command=self.set_one).pack(side=LEFT, pady=5, padx=5)
         Button(self.row1, text='2', width=10, height=2, command=self.set_two).pack(side=LEFT, pady=5, padx=5)
@@ -40,6 +43,7 @@ class Memory:
         Button(self.row4, text='clear', width=10, height=2, command=self.clear).pack(side=LEFT, pady=5, padx=5)
         self.row4.pack()
 
+    # если на экране 1
     def set_one(self):
         if self.stage == 1:
             self.lbl1.configure(text="Нажмите на 2 позицию")
@@ -70,6 +74,7 @@ class Memory:
 
         self.stage += 1
 
+    # если на экране 2
     def set_two(self):
         if self.stage == 1:
             self.lbl1.configure(text="Нажмите на 2 позицию")
@@ -100,6 +105,7 @@ class Memory:
 
         self.stage += 1
 
+    # если на экране 3
     def set_three(self):
         if self.stage == 1:
             self.lbl1.configure(text="Нажмите на 3 позицию")
@@ -128,6 +134,7 @@ class Memory:
             self.lbl1.configure(text="ДУРАК")
             self.lbl2.configure(text="ЭТАПОВ ВСЕГО ПЯТЬ!!!!!")
 
+    # если на экране 4
     def set_four(self):
         if self.stage == 1:
             self.lbl1.configure(text="Нажмите на 4 позицию")
@@ -156,9 +163,9 @@ class Memory:
             self.lbl1.configure(text="ДУРАК")
             self.lbl2.configure(text="ЭТАПОВ ВСЕГО ПЯТЬ!!!!!")
 
-
         self.stage += 1
 
+    # засовываем в программу то, что там навводил пользователь
     def enter(self):
         if self.value:
             self.values.append(int(self.num.get()))
@@ -168,6 +175,7 @@ class Memory:
         self.lbl2.configure(text="")
         self.txt.delete(0, END)
 
+    # если кто-то допустил ошибку, начинаем всё сначала
     def clear(self):
         self.values.clear()
         self.positions.clear()

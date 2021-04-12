@@ -27,26 +27,19 @@ class Wires:
         self.txt = ""
 
         self.row1 = Frame(self.top)
-        self.red = Button(self.row1, bg="#f55353", width=10, height=2, command=self.write_red)
-        self.red.pack(side=LEFT, pady=5, padx=5)
-        self.blue = Button(self.row1, bg="#5653f5", width=10, height=2, command=self.write_blue)
-        self.blue.pack(side=LEFT, pady=5, padx=5)
-        self.yellow = Button(self.row1, bg="#f2f553", width=10, height=2, command=self.write_yellow)
-        self.yellow.pack(side=LEFT, pady=5, padx=5)
+        Button(self.row1, bg="#f55353", width=10, height=2, command=self.write_red).pack(side=LEFT, pady=5, padx=5)
+        Button(self.row1, bg="#5653f5", width=10, height=2, command=self.write_blue).pack(side=LEFT, pady=5, padx=5)
+        Button(self.row1, bg="#f2f553", width=10, height=2, command=self.write_yellow).pack(side=LEFT, pady=5, padx=5)
         self.row1.pack()
 
         self.row2 = Frame(self.top)
-        self.black = Button(self.row2, bg="#000", width=10, height=2, command=self.write_black)
-        self.black.pack(side=LEFT, pady=5, padx=15)
-        self.white = Button(self.row2, bg="#fff", width=10, height=2, command=self.write_white)
-        self.white.pack(side=LEFT, pady=5, padx=15)
+        Button(self.row2, bg="#000", width=10, height=2, command=self.write_black).pack(side=LEFT, pady=5, padx=15)
+        Button(self.row2, bg="#fff", width=10, height=2, command=self.write_white).pack(side=LEFT, pady=5, padx=15)
         self.row2.pack()
 
         self.row3 = Frame(self.top)
-        self.btn = Button(self.row3, text="Клик!", width=10, height=2, command=self.enter)
-        self.btn.pack(side=LEFT, pady=5, padx=15)
-        self.btn = Button(self.row3, text="clear", width=10, height=2, command=self.clear)
-        self.btn.pack(side=LEFT, pady=5, padx=15)
+        Button(self.row3, text="Клик!", width=10, height=2, command=self.enter).pack(side=LEFT, pady=5, padx=15)
+        Button(self.row3, text="clear", width=10, height=2, command=self.clear).pack(side=LEFT, pady=5, padx=15)
         self.row3.pack()
 
     def write_red(self):
@@ -128,11 +121,3 @@ class Wires:
     def clear(self):
         self.txt = ""
         self.lbl.configure(text="")
-
-
-if __name__ == '__main__':
-    root = Tk()
-    root.withdraw()
-    window = Wires(root)
-    window.place()
-    root.mainloop()

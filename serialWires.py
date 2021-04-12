@@ -8,6 +8,7 @@ class SerialWires:
         self.frame = Frame(self.top)
         self.frame.pack(side=BOTTOM)
 
+        # массивы с решениями для каждого цвета
         self.decision_red = [['c'],
                              ['b'],
                              ['a'],
@@ -38,13 +39,16 @@ class SerialWires:
                                ['c'],
                                ['c']]
 
+        # количество попавшихся проводов
         self.count_red = -1
         self.count_blue = -1
         self.count_black = -1
 
+        # нажатые цвет и буква
         self.current_let = ''
         self.current_color = ''
 
+        # интерфейс
         self.row1 = Frame(self.top)
         Button(self.row1, bg="#f55353", command=self.inc_count_and_set_red, width=10, height=2).pack(side=LEFT, padx=5, pady=5)
         Button(self.row1, bg="#5653f5", command=self.inc_count_and_set_blue, width=10, height=2).pack(side=LEFT, padx=5, pady=5)
@@ -88,6 +92,7 @@ class SerialWires:
     def choose_c(self):
         self.current_let = 'c'
 
+    # вызывает кнопка что делать
     def must_do(self):
         result = ''
         colors = ['red', 'blue', 'black']
@@ -102,6 +107,7 @@ class SerialWires:
 
         self.lbl.configure(text=result)
 
+    # вызывает кнопка упс
     def ooopsy(self):
         if self.current_color == 'red':
             self.count_red -= 1

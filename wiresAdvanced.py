@@ -21,13 +21,11 @@ class WiresAdvanced:
         self.count = self.count_labels()
         for i in range(self.count):
             self.row = Frame(self.top)
-            self.label = Label(self.row, text=self.label_array[i])
-            self.label.pack(side=LEFT, pady=1, padx=15)
+            Label(self.row, text=self.label_array[i]).pack(side=LEFT, pady=1, padx=15)
             self.row.pack()
         self.row = Frame(self.top)
         self.img = ImageTk.PhotoImage(Image.open("resources\\meme.jpg"))
-        self.label = Label(self.row, image=self.img)
-        self.label.pack(side=LEFT, pady=1, padx=15)
+        Label(self.row, image=self.img).pack(side=LEFT, pady=1, padx=15)
         self.row.pack()
 
     def count_labels(self):

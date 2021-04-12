@@ -14,14 +14,10 @@ class Memory:
         self.num = StringVar()
 
         self.row1 = Frame(self.top)
-        self.but1 = Button(self.row1, text='1', width=10, height=2, command=self.set_one)
-        self.but1.pack(side=LEFT, pady=5, padx=5)
-        self.but2 = Button(self.row1, text='2', width=10, height=2, command=self.set_two)
-        self.but2.pack(side=LEFT, pady=5, padx=5)
-        self.but3 = Button(self.row1, text='3', width=10, height=2, command=self.set_three)
-        self.but3.pack(side=LEFT, pady=5, padx=5)
-        self.but4 = Button(self.row1, text='4', width=10, height=2, command=self.set_four)
-        self.but4.pack(side=LEFT, pady=5, padx=5)
+        Button(self.row1, text='1', width=10, height=2, command=self.set_one).pack(side=LEFT, pady=5, padx=5)
+        Button(self.row1, text='2', width=10, height=2, command=self.set_two).pack(side=LEFT, pady=5, padx=5)
+        Button(self.row1, text='3', width=10, height=2, command=self.set_three).pack(side=LEFT, pady=5, padx=5)
+        Button(self.row1, text='4', width=10, height=2, command=self.set_four).pack(side=LEFT, pady=5, padx=5)
         self.row1.pack()
 
         self.row2 = Frame(self.top)
@@ -40,10 +36,8 @@ class Memory:
         self.row4.pack()
 
         self.row4 = Frame(self.top)
-        self.but1 = Button(self.row4, text='Клик!', width=10, height=2, command=self.enter)
-        self.but1.pack(side=LEFT, pady=5, padx=5)
-        self.but2 = Button(self.row4, text='clear', width=10, height=2, command=self.clear)
-        self.but2.pack(side=LEFT, pady=5, padx=5)
+        Button(self.row4, text='Клик!', width=10, height=2, command=self.enter).pack(side=LEFT, pady=5, padx=5)
+        Button(self.row4, text='clear', width=10, height=2, command=self.clear).pack(side=LEFT, pady=5, padx=5)
         self.row4.pack()
 
     def set_one(self):

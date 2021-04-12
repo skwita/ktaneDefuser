@@ -5,7 +5,7 @@ from button import *
 from wiresAdvanced import *
 from memory import *
 from keyboard import *
-
+from maze import *
 
 
 class Main:
@@ -61,9 +61,9 @@ class Main:
         self.button_key_board.pack(side=LEFT, padx=5, pady=5)
         self.row3.pack()
 
-        self.row4 = tk.Frame()
-        self.button_colors = Button(self.row4, text='Делай как я', command=self.open_colors, width=15)
-        self.button_colors.pack(side=LEFT, padx=5, pady=5)
+        self.row4 = tk.Frame()           # |
+        # Сделать все кнопки так как эту  \|/
+        Button(self.row4, text='Делай как я', command=self.open_colors, width=15).pack(side=LEFT, padx=5, pady=5)
         self.button_words = Button(self.row4, text='А вас как зовут', command=self.open_words, width=15)
         self.button_words.pack(side=LEFT, padx=5, pady=5)
         self.button_memory = Button(self.row4, text='Память', command=self.open_memory, width=15)
@@ -119,7 +119,7 @@ class Main:
         pass
 
     def open_maze(self):
-        pass
+        self.Maze = Maze(self.master)
 
     def open_rotary_handle(self):
         pass

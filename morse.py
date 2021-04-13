@@ -7,48 +7,177 @@ class Morse:
         self.top.title('Морзе')
         self.frame = Frame(self.top)
 
-        self.main_string = ""
+        self.decodes = {
+            '.-': 'a', '-...': 'b', '-.-.': 'c', '-..': 'd',
+            '.': 'e', '..-.': 'f', '--.': 'g', '....': 'h',
+            '..': 'i', '.---': 'j', '-.-': 'k', '.-..': 'l',
+            '--': 'm', '-.': 'n', '---': 'o', '.--.': 'p',
+            '--.-': 'q', '.-.': 'r', '...': 's', '-': 't',
+            '..-': 'u', '...-': 'v', '.--': 'w', '-..-': 'x',
+            '-.--': 'y', '--..': 'z'
+        }
 
-        self.input = Label(self.top, width=45, height=1, bg='white')
-        self.input.pack(padx=5, pady=5)
+        self.morse_codes = ['.-', '-...', '-.-.', '-..', '.', '..-.', '--.', '....', '..', '.---', '-.-',
+                            '.-..', '--', '-.', '---', '.--.', '--.-', '.-.', '...', '-', '..-', '...-', '.--', '-..-',
+                            '-.--', '--..']
 
-        self.row0 = Frame(self.top)
-        self.point_button = Button(self.row0, text=".", command=self.inp_point, width=10).pack(side=LEFT, padx=5, pady=5)
-        self.dash_button = Button(self.row0, text="-", command=self.inp_dash, width=10).pack(side=LEFT, padx=5, pady=5)
-        self.space_button = Button(self.row0, text="⌴", command=self.inp_space, width=10).pack(side=LEFT, padx=5, pady=5)
-        self.mistake_button = Button(self.row0, text="X", command=self.inp_mistake, width=10).pack(side=LEFT, padx=5, pady=5)
-        self.row0.pack()
+        self.words_frequencies = {
+            'shell': '3.505 MHz', 'halls': '3.515 MHz', 'slick': '3.522 MHz', 'trick': '3.532 MHz',
+            'boxes': '3.535 MHz', 'leaks': '3.542 MHz', 'strobe': '3.545 MHz', 'bistro': '3.552 MHz',
+            'flick': '3.555 MHz', 'bombs': '3.565 MHz', 'break': '3.572 MHz', 'brick': '3.575 MHz',
+            'steak': '3.582 MHz', 'sting': '3.592 MHz', 'vector': '3.595 MHz', 'beats': '3.600 MHz'
+        }
 
-        self.row1 = Frame(self.top)
-        self.parse_button = Button(self.row1, text="Parse", command=self.parse, width=22).pack(side=LEFT, padx=5, pady=5)
-        self.clear_button = Button(self.row1, text="Clear", command=self.clear, width=22).pack(side=LEFT, padx=5, pady=5)
-        self.row1.pack()
+        self.words = ['shell', 'halls', 'slick', 'trick', 'boxes', 'leaks', 'strobe', 'bistro', 'flick',
+                      'bombs', 'break', 'brick', 'steak', 'sting', 'vector', 'beats']
 
-        self.output = Label(self.top, width=45, height=1, bg='#a5ff8f')
-        self.output.pack(padx=5, pady=5)
+        self.frequencies = ['3.505 MHz', '3.515 MHz', '3.522 MHz', '3.532 MHz', '3.535 MHz', '3.542 MHz',
+                            '3.545 MHz', '3.552 MHz', '3.555 MHz', '3.565 MHz', '3.572 MHz', '3.575 MHz',
+                            '3.582 MHz', '3.592 MHz', '3.595 MHz', '3.600 MHz']
 
-    def inp_point(self):
-        self.main_string += "."
-        self.update_lbl()
+        self.letter1 = StringVar()
+        self.letter2 = StringVar()
+        self.letter3 = StringVar()
+        self.letter4 = StringVar()
+        self.letter5 = StringVar()
 
-    def inp_dash(self):
-        self.main_string += "-"
-        self.update_lbl()
+        row_array = list()
 
-    def inp_space(self):
-        self.main_string += "   "
-        self.update_lbl()
+        for i in range(4):
+            row = Frame(self.top)
+            row_array.append(row)
 
-    def inp_mistake(self):
-        self.main_string += "X"
-        self.update_lbl()
+        self.labels = list()
 
-    def update_lbl(self):
-        self.input.configure(text=self.main_string)
+        for i in range(4):
+            for j in range(4):
+                self.array_label = Label(row_array[i], width=10, text=self.frequencies[i * 4 + j], font='20')
+                self.array_label.pack(side=LEFT)
+                self.labels.append(self.array_label)
+            row_array[i].pack(side=TOP)
+
+        self.input0 = Entry(self.top, bg='white', textvariable=self.letter1)
+        self.input0.pack(padx=5, pady=5)
+        self.input1 = Entry(self.top, bg='white', textvariable=self.letter2)
+        self.input1.pack(padx=5, pady=5)
+        self.input2 = Entry(self.top, bg='white', textvariable=self.letter3)
+        self.input2.pack(padx=5, pady=5)
+        self.input3 = Entry(self.top, bg='white', textvariable=self.letter4)
+        self.input3.pack(padx=5, pady=5)
+        self.input4 = Entry(self.top, bg='white', textvariable=self.letter5)
+        self.input4.pack(padx=5, pady=5)
+
+        self.clear_button = Button(self.top, text="Clear", command=self.clear, width=22).pack(padx=5, pady=5)
+
+        self.letter1.trace("w", lambda name, index, mode, word1=self.letter1: self.parse())
+        self.letter2.trace("w", lambda name, index, mode, word2=self.letter2: self.parse())
+        self.letter3.trace("w", lambda name, index, mode, word3=self.letter3: self.parse())
+        self.letter4.trace("w", lambda name, index, mode, word4=self.letter4: self.parse())
+        self.letter5.trace("w", lambda name, index, mode, word5=self.letter5: self.parse())
 
     def parse(self):
-        pass
+        result1 = list()
+        result2 = list()
+        result3 = list()
+        result4 = list()
+        result5 = list()
+
+        first = ''
+        second = ''
+        third = ''
+        fourth = ''
+        fifth = ''
+
+        if self.letter1.get() is not None and self.morse_codes.__contains__(self.letter1.get()):
+            first = self.decodes.get(self.letter1.get())
+        if self.letter2.get() is not None and self.morse_codes.__contains__(self.letter2.get()):
+            second = self.decodes.get(self.letter2.get())
+        if self.letter3.get() is not None and self.morse_codes.__contains__(self.letter3.get()):
+            third = self.decodes.get(self.letter3.get())
+        if self.letter4.get() is not None and self.morse_codes.__contains__(self.letter4.get()):
+            fourth = self.decodes.get(self.letter4.get())
+        if self.letter5.get() is not None and self.morse_codes.__contains__(self.letter5.get()):
+            fifth = self.decodes.get(self.letter5.get())
+
+        for word in self.words:
+            if first == word[0]:
+                result1.append(word)
+        for word in self.words:
+            if second == word[1]:
+                result2.append(word)
+        for word in self.words:
+            if third == word[2]:
+                result3.append(word)
+        for word in self.words:
+            if fourth == word[3]:
+                result4.append(word)
+        for word in self.words:
+            if fifth == word[4]:
+                result5.append(word)
+
+        final = list()
+
+        if self.letter1.get() == "":
+            letter1 = False
+        else:
+            letter1 = True
+        if self.letter2.get() == "":
+            letter2 = False
+        else:
+            letter2 = True
+        if self.letter3.get() == "":
+            letter3 = False
+        else:
+            letter3 = True
+        if self.letter4.get() == "":
+            letter4 = False
+        else:
+            letter4 = True
+        if self.letter5.get() == "":
+            letter5 = False
+        else:
+            letter5 = True
+
+        final = self.words.copy()
+
+        for i in range(len(self.words)):
+            if letter1:
+                if not result1.__contains__(self.words[i]) and final.__contains__(self.words[i]):
+                    final.pop(final.index(self.words[i]))
+            if letter2:
+                if not result2.__contains__(self.words[i]) and final.__contains__(self.words[i]):
+                    final.pop(final.index(self.words[i]))
+            if letter3:
+                if not result3.__contains__(self.words[i]) and final.__contains__(self.words[i]):
+                    final.pop(final.index(self.words[i]))
+            if letter4:
+                if not result4.__contains__(self.words[i]) and final.__contains__(self.words[i]):
+                    final.pop(final.index(self.words[i]))
+            if letter5:
+                if not result5.__contains__(self.words[i]) and final.__contains__(self.words[i]):
+                    final.pop(final.index(self.words[i]))
+
+        super_final = list()
+        for i in range(len(final)):
+            super_final.append(self.words_frequencies.get(final[i]))
+
+        for i in range(len(self.frequencies)):
+            if super_final.__contains__(self.labels[i].cget("text")):
+                self.labels[i].configure(bg="#a5ff8f")
+            else:
+                self.labels[i].configure(bg="#ffa6a6")
+
+        result1.clear()
+        result2.clear()
+        result3.clear()
+        result4.clear()
 
     def clear(self):
-        self.main_string = ""
-        self.update_lbl()
+        self.input0.delete(0, END)
+        self.input1.delete(0, END)
+        self.input2.delete(0, END)
+        self.input3.delete(0, END)
+        self.input4.delete(0, END)
+        for i in range(len(self.frequencies)):
+            self.labels[i].configure(bg="#ffa6a6")
+

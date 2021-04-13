@@ -27,7 +27,7 @@ class Password:
         # root.geometry('500x500')
         for i in range(7):
             for j in range(5):
-                self.array_label = tk.Label(row_array[i], width=7, text=self.allWords[i * 5 +j], font='20')
+                self.array_label = tk.Label(row_array[i], width=7, text=self.allWords[i * 5 + j], font='20')
                 self.array_label.pack(side='left', fill='x')
                 self.labels.append(self.array_label)
             row_array[i].pack(fill='x', expand=True)

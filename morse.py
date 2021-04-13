@@ -52,20 +52,44 @@ class Morse:
         for i in range(4):
             for j in range(4):
                 self.array_label = Label(row_array[i], width=10, text=self.frequencies[i * 4 + j], font='20')
-                self.array_label.pack(side=LEFT)
+                self.array_label.pack(side=LEFT, pady=5, padx=5)
                 self.labels.append(self.array_label)
             row_array[i].pack(side=TOP)
 
-        self.input0 = Entry(self.top, bg='white', textvariable=self.letter1)
-        self.input0.pack(padx=5, pady=5)
-        self.input1 = Entry(self.top, bg='white', textvariable=self.letter2)
-        self.input1.pack(padx=5, pady=5)
-        self.input2 = Entry(self.top, bg='white', textvariable=self.letter3)
-        self.input2.pack(padx=5, pady=5)
-        self.input3 = Entry(self.top, bg='white', textvariable=self.letter4)
-        self.input3.pack(padx=5, pady=5)
-        self.input4 = Entry(self.top, bg='white', textvariable=self.letter5)
-        self.input4.pack(padx=5, pady=5)
+        self.row = Frame(self.top)
+        self.input0 = Entry(self.row, width=20, bg='white', textvariable=self.letter1)
+        self.input0.pack(padx=5, pady=5, side=LEFT)
+        self.label0 = Label(self.row, width=3)
+        self.label0.pack(side=LEFT, pady=5, padx=5)
+        self.row.pack()
+
+        self.row = Frame(self.top)
+        self.input1 = Entry(self.row, width=20, bg='white', textvariable=self.letter2)
+        self.input1.pack(padx=5, pady=5, side=LEFT)
+        self.label1 = Label(self.row, width=3)
+        self.label1.pack(side=LEFT, pady=5, padx=5)
+        self.row.pack()
+
+        self.row = Frame(self.top)
+        self.input2 = Entry(self.row, width=20, bg='white', textvariable=self.letter3)
+        self.input2.pack(padx=5, pady=5, side=LEFT)
+        self.label2 = Label(self.row, width=3)
+        self.label2.pack(side=LEFT, pady=5, padx=5)
+        self.row.pack()
+
+        self.row = Frame(self.top)
+        self.input3 = Entry(self.row, width=20, bg='white', textvariable=self.letter4)
+        self.input3.pack(padx=5, pady=5, side=LEFT)
+        self.label3 = Label(self.row, width=3)
+        self.label3.pack(side=LEFT, pady=5, padx=5)
+        self.row.pack()
+
+        self.row = Frame(self.top)
+        self.input4 = Entry(self.row, width=20, bg='white', textvariable=self.letter5)
+        self.input4.pack(padx=5, pady=5, side=LEFT)
+        self.label4 = Label(self.row, width=3)
+        self.label4.pack(side=LEFT, pady=5, padx=5)
+        self.row.pack()
 
         self.clear_button = Button(self.top, text="Clear", command=self.clear, width=22).pack(padx=5, pady=5)
 
@@ -117,33 +141,46 @@ class Morse:
 
         final = list()
 
-        if self.letter1.get() == "":
+        if not self.morse_codes.__contains__(self.letter1.get()):
             letter1 = False
+            self.label0.configure(text='error')
         else:
             letter1 = True
-        if self.letter2.get() == "":
+            self.label0.configure(text=first)
+        if not self.morse_codes.__contains__(self.letter2.get()):
             letter2 = False
+            self.label1.configure(text='error')
         else:
             letter2 = True
-        if self.letter3.get() == "":
+            self.label1.configure(text=second)
+        if not self.morse_codes.__contains__(self.letter3.get()):
             letter3 = False
+            self.label2.configure(text='error')
         else:
             letter3 = True
-        if self.letter4.get() == "":
+            self.label2.configure(text=third)
+        if not self.morse_codes.__contains__(self.letter4.get()):
             letter4 = False
+            self.label3.configure(text='error')
         else:
             letter4 = True
-        if self.letter5.get() == "":
+            self.label3.configure(text=fourth)
+        if not self.morse_codes.__contains__(self.letter5.get()):
             letter5 = False
+            self.label4.configure(text='error')
         else:
             letter5 = True
+            self.label4.configure(text=fifth)
 
         final = self.words.copy()
 
         for i in range(len(self.words)):
             if letter1:
-                if not result1.__contains__(self.words[i]) and final.__contains__(self.words[i]):
-                    final.pop(final.index(self.words[i]))
+                if final.__contains__(self.words[i]):
+                    if not result1.__contains__(self.words[i]):
+                        final.pop(final.index(self.words[i]))
+
+
             if letter2:
                 if not result2.__contains__(self.words[i]) and final.__contains__(self.words[i]):
                     final.pop(final.index(self.words[i]))
@@ -178,6 +215,11 @@ class Morse:
         self.input2.delete(0, END)
         self.input3.delete(0, END)
         self.input4.delete(0, END)
+        self.label0.configure(text='')
+        self.label1.configure(text='')
+        self.label2.configure(text='')
+        self.label3.configure(text='')
+        self.label4.configure(text='')
         for i in range(len(self.frequencies)):
             self.labels[i].configure(bg="#ffa6a6")
 

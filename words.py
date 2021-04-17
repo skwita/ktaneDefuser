@@ -88,13 +88,13 @@ class Words:
         self.row5.pack()
 
     def proceed(self):
-        main_word = self.main_combobox.get()
-        word1 = self.word_combobox1.get()
-        word2 = self.word_combobox2.get()
-        word3 = self.word_combobox3.get()
-        word4 = self.word_combobox4.get()
-        word5 = self.word_combobox5.get()
-        word6 = self.word_combobox6.get()
+        main_word = self.main_combobox.get().upper()
+        word1 = self.word_combobox1.get().upper()
+        word2 = self.word_combobox2.get().upper()
+        word3 = self.word_combobox3.get().upper()
+        word4 = self.word_combobox4.get().upper()
+        word5 = self.word_combobox5.get().upper()
+        word6 = self.word_combobox6.get().upper()
         current_word = ""
         work_array = []
         result = ""
